@@ -21,11 +21,10 @@ else:
 
 with picamera.PiCamera() as camera:
     try:
-        for picture, filename in enumerate(camera.capture_continuous('/home/pi/Documents/timelapse/rpi3-timelapse/img_{timestamp:%Y%m%d_%H%M%S}.jpg')):
+        for picture, filename in enumerate(camera.capture_continuous('/home/pi/Documents/timelapse/pictures/img_{timestamp:%Y%m%d_%H%M%S}.jpg')):
             print('picture number %d of %d' % (picture, number_of_pictures))
             sleep(wait_time)
             if picture >= number_of_pictures:
                 break
     finally:
         camera.close()
-
