@@ -8,8 +8,8 @@ import picamera
 # video_length is the length of video desired (in seconds) assuming video frames per second (video_fps) settings.
 # set event_duration OR video_length, not both. If using event_duration, video_length must be set to None.
 # wait_time is the amount of time between photos (in seconds) and is used in conjunction with event_duration.
-event_duration = 300
-wait_time = 2
+event_duration = 60
+wait_time = 1
 video_length = None
 video_fps = 10
 
@@ -21,7 +21,7 @@ else:
 
 with picamera.PiCamera() as camera:
     try:
-        for picture, filename in enumerate(camera.capture_continuous('/home/pi/timelapse/img_{timestamp:%Y%m%d_%H%M%S}.jpg')):
+        for picture, filename in enumerate(camera.capture_continuous('/home/pi/Documents/timelapse/rpi3-timelapse/img_{timestamp:%Y%m%d_%H%M%S}.jpg')):
             print('picture number %d of %d' % (picture, number_of_pictures))
             sleep(wait_time)
             if picture >= number_of_pictures:
